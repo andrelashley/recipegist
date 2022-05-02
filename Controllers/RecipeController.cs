@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RecipeGist.Models;
+using RecipeGist.ViewModels;
 
 namespace RecipeGist.Controllers
 {
@@ -16,7 +17,11 @@ namespace RecipeGist.Controllers
 
         public ViewResult List()
         {
-            return View(_recipeRepository.AllRecipes);
+            RecipesListViewModel recipesListViewModel = new RecipesListViewModel();
+            recipesListViewModel.Recipes = _recipeRepository.AllRecipes;
+            recipesListViewModel.CurrentCategory = "Recipes";
+
+            return View(recipesListViewModel);
         }
     }
 }
