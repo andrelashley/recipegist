@@ -23,5 +23,13 @@ namespace RecipeGist.Controllers
 
             return View(recipesListViewModel);
         }
+
+        public IActionResult Details(int id)
+        {
+            var recipe = _recipeRepository.GetRecipeById(id);
+            if (recipe == null)
+                return NotFound();
+            return View(recipe);
+        }
     }
 }
