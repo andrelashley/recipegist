@@ -3,9 +3,5 @@
 <h1>@Model.CurrentCategory</h1>
 @foreach (var recipe in Model.Recipes)
 {
-    <div>
-        <h2><a asp-controller="Recipe" asp-action="Details" asp-route-id="@recipe.RecipeId">@recipe.Name</a></h2>
-        <h3>@recipe.Description</h3>
-        <h4>@recipe.Category.Description</h4>
-    </div>
+    <partial name="_RecipeCard" model="recipe" />
 }
